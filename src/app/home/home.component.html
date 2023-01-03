@@ -1,0 +1,18 @@
+<section class="img-fluid" style="background: url(../assets/img/Coffee.webp); background-size: cover; height: 800px; overflow: auto;">
+    <!-- <img src="../assets/img/Coffee.webp" alt="img"> -->
+
+    <div class="">
+        <h1 class="text-center mb-3">Home List By Usha</h1>
+        <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+        <h4>Your Todos</h4>
+
+        <div *ngIf="this.home.length===0; else elseBlock">No Todos to display</div>
+        <ng-template #elseBlock>
+
+            <div *ngFor="let home of home; index as i">
+                <app-todo-item [home]="home" [i]="i" (todoDelete)="deleteTodo($event)"
+                    (todoCheckbox)="toggleTodo($event)"> </app-todo-item>
+            </div>
+        </ng-template>
+    </div>
+</section>
